@@ -1,5 +1,8 @@
 import { APIProvider, Map } from "@vis.gl/react-google-maps"
 
+import Directions from "./Directions"
+
+
 export default function MapContainer() {
   return (
     <div style={{ height: '100vh', width: '100%' }}> 
@@ -21,13 +24,16 @@ export default function MapContainer() {
     padding: 5,
     backdropFilter: 'blur(5px)',
     fontFamily: 'monospace'
-
    }}>
    <h2>DIRECTIONS</h2>
-   <p>start address</p><input type="text"/>
+   <p>start address</p><input value={} type="text"/>
    <p>end address</p> <input type="text" />
+   <br />
+   <button style={{
+    marginTop: 5
+   }}>push</button>
    </div>
- 
+    <Directions />
     </Map>
     </APIProvider>
     </div>
