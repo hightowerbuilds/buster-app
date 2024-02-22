@@ -26,7 +26,7 @@ export default function MapContainer() {
     fontFamily: 'monospace'
    }}>
    <h2>DIRECTIONS</h2>
-   <p>start address</p><input value={} type="text"/>
+   <p>start address</p><input value={null} type="text"/>
    <p>end address</p> <input type="text" />
    <br />
    <button style={{
