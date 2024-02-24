@@ -1,6 +1,4 @@
 
-
-
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps"
 import { useEffect, useState } from "react";
 
@@ -13,6 +11,7 @@ export default function Directions() {
     const [ routes, setRoutes ] = useState([])
     const [ routeIndex, setRouteIndex ] = useState(0);
     const selected = routes[routeIndex];
+    const [ driveStep, setDriveStep ] = useState(0)
     
     const [ startAddress, setStartAddress ] = useState('')
     const [ endAddress, setEndAddress ] = useState('')
@@ -23,7 +22,6 @@ export default function Directions() {
         setDirectionsRenderer(new routesLibrary.DirectionsRenderer({ map }))
        
     }, [routesLibrary, map])
-
 
 
     useEffect(() => {
@@ -39,15 +37,18 @@ export default function Directions() {
         })
     }, [ directionsService, directionsRenderer, startAddress, endAddress ])
 
-    console.log(routes[0]?.legs[0].steps.length)
     useEffect(() => {
         if(!directionsRenderer ) return;
         directionsRenderer.setRouteIndex(routeIndex)
     }, [routeIndex, directionsRenderer])
 
-    const distance = routes[0]?.legs[0].distance.text
-    const duration = routes[0]?.legs[0].duration.text
-    const steps = routes[0]?.legs[0].steps.length
+    const otherRoutes = routes[routeIndex]?.summary 
+    const distance = routes[routeIndex]?.legs[0].distance.text
+    const duration = routes[routeIndex]?.legs[0].duration.text
+    const steps = routes[routeIndex]?.legs[0].steps.length
+    const instructions = routes[routeIndex]?.legs[0].steps[driveStep].instructions
+    const startPoint = routes[routeIndex]?.legs[0].start_address
+    const endPoint = routes[routeIndex]?.legs[0].end_address
 
   return (
     <div style={{ padding: 0}}>
@@ -59,7 +60,7 @@ export default function Directions() {
             style={{ width: 290, height: 20, fontFamily: 'inherit', }} 
             />
         <br />
-       <p style={{ margin: 5, fontSize: 18}}>{startAddress}</p>
+       <p style={{ margin: 5, fontSize: 18}}>{startPoint}</p>
         <p style={{fontSize: 18}}>END</p> 
         <input 
             onChange={(e) => setEndAddress(e.target.value)} 
@@ -68,10 +69,21 @@ export default function Directions() {
             style={{ width: 290, height: 20, fontFamily: 'inherit'}} 
             />
         <br />
-        <p style={{ margin: 5, fontSize: 18}}>{endAddress}</p>
+        <p style={{ margin: 5, fontSize: 18}}>{endPoint}</p>
+        <p style={{ margin: 5, fontSize: 18}}>
+        
+          
+                <p>{otherRoutes}</p>
+                <p> choose from {routes.length} routes: {routes.map((route, index) => (<p key={route.summary}> <button onClick={() => setRouteIndex(index)}>{route.summary}</button></p>))}</p>
+             </p> 
         <p style={{ margin: 5, fontSize: 18}}>distance: {distance}</p>
         <p style={{ margin: 5, fontSize: 18}}>duration: {duration}</p>
         <p style={{ margin: 5, fontSize: 18}}># of steps: {steps}</p>
+        <p>instructions: {instructions}</p>
+        <input 
+            onChange={(e) => setDriveStep(e.target.value)}
+            type="number"
+            value={driveStep} />
     </div>
   );
 }
