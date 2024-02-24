@@ -13,9 +13,9 @@ export default function Directions() {
     const [ routes, setRoutes ] = useState([])
     const [ routeIndex, setRouteIndex ] = useState(0);
     const selected = routes[routeIndex];
-    const leg = selected?.legs[0]
+    
     const [ startAddress, setStartAddress ] = useState('')
-
+    const [ endAddress, setEndAddress ] = useState('')
 
     useEffect(() => {
         if(!routesLibrary || !map) return;  
@@ -30,47 +30,49 @@ export default function Directions() {
         if(!directionsService || !directionsRenderer) return;
         directionsService.route({
             origin: startAddress,
-            destination: '1027 Toledano St. New Orleans, LA 70115',
+            destination: endAddress,
             travelMode: google.maps.TravelMode.DRIVING,
             provideRouteAlternatives: true
         }).then( response => {
             directionsRenderer.setDirections(response)
             setRoutes(response.routes);
         })
-    }, [ directionsService, directionsRenderer, startAddress ])
+    }, [ directionsService, directionsRenderer, startAddress, endAddress ])
 
-    console.log(routes)
-
+    console.log(routes[0]?.legs[0].steps.length)
     useEffect(() => {
-        if(!directionsRenderer) return;
+        if(!directionsRenderer ) return;
         directionsRenderer.setRouteIndex(routeIndex)
     }, [routeIndex, directionsRenderer])
 
-    const answer = routes.map((route, index) => <li key={route.summary}> <button style={{fontFamily: 'monospace'}} onClick={() => setRouteIndex(index)}>{route.summary}</button> </li> )
-
-    if(!leg) return null;
-
+    const distance = routes[0]?.legs[0].distance.text
+    const duration = routes[0]?.legs[0].duration.text
+    const steps = routes[0]?.legs[0].steps.length
 
   return (
-    <div style={{ 
-        height: 'fit-content',
-        width: 'fit-content',
-        padding: 2, 
-        left: 10,
-        border: '2px black solid',
-        position: 'absolute',
-        zIndex: 0,
-        fontFamily: 'monospace',
-    
-      }}>
-        <p>starts here: {leg.start_address}</p>  
-        <p>ends here: {leg.end_address}</p> 
-        <p>number of steps in the trip {leg.steps.length}</p> 
-        <p>the distance {leg.distance?.text}</p>
-        <p>the duration {leg.duration?.text}</p>
-        <ul>
-        {answer}
-        </ul>
+    <div style={{ padding: 0}}>
+        <p style={{fontSize: 18}}>START</p> 
+        <input 
+            onChange={(e) => setStartAddress(e.target.value)} 
+            type="text" 
+            value={startAddress}
+            style={{ width: 290, height: 20, fontFamily: 'inherit', }} 
+            />
+        <br />
+       <p style={{ margin: 5, fontSize: 18}}>{startAddress}</p>
+        <p style={{fontSize: 18}}>END</p> 
+        <input 
+            onChange={(e) => setEndAddress(e.target.value)} 
+            type="text" 
+            value={endAddress}   
+            style={{ width: 290, height: 20, fontFamily: 'inherit'}} 
+            />
+        <br />
+        <p style={{ margin: 5, fontSize: 18}}>{endAddress}</p>
+        <p style={{ margin: 5, fontSize: 18}}>distance: {distance}</p>
+        <p style={{ margin: 5, fontSize: 18}}>duration: {duration}</p>
+        <p style={{ margin: 5, fontSize: 18}}># of steps: {steps}</p>
     </div>
   );
 }
+

@@ -1,5 +1,4 @@
 import { APIProvider, Map } from "@vis.gl/react-google-maps"
-
 import Directions from "./Directions"
 
 
@@ -13,27 +12,21 @@ export default function MapContainer() {
       gestureHandling={'greedy'}
       disableDefaultUI={true}
     >
-   <div style={{
-    position: 'absolute',
-    zIndex: 0,
-    height: '95vh',
-    width: 300,
-    border: '3px black solid',
-    marginTop: 15,
-    marginLeft: 15,
-    padding: 5,
-    backdropFilter: 'blur(5px)',
-    fontFamily: 'monospace'
-   }}>
-   <h2>DIRECTIONS</h2>
-   <p>start address</p><input value={null} type="text"/>
-   <p>end address</p> <input type="text" />
-   <br />
-   <button style={{
-    marginTop: 5
-   }}>push</button>
-   </div>
-    <Directions />
+    <div style={{ 
+        position: 'absolute',
+        zIndex: 0,
+        height: '95vh',
+        width: 300,
+        border: '3px black solid',
+        marginTop: 15,
+        marginLeft: 15,
+        padding: 5,
+        backdropFilter: 'blur(5px)',
+        fontFamily: 'monospace'
+      }}>
+        <Directions />
+      
+    </div>
     </Map>
     </APIProvider>
     </div>
