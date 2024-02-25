@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export const useGeolocation = () => {
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState('error');
   
     useEffect(() => {
       const getLocation = () => {

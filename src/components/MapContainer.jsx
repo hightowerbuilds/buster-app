@@ -2,14 +2,20 @@ import { APIProvider, Map } from "@vis.gl/react-google-maps"
 import Directions from "./Directions"
 import { useGeolocation } from '../hooks/useGeolocation'
 
+
 export default function MapContainer() {
 
   const { latitude, longitude, error } = useGeolocation()
-  console.log( latitude, longitude, error )
+  console.log(latitude, longitude, error )
 
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}> 
+    <div style={{ 
+      height: '100vh', 
+      width: '100%',
+  
+      }}> 
+
     <APIProvider apiKey={import.meta.env.VITE_KEY}>
     <Map
       defaultCenter={{ lat: 47, lng: -122}}
@@ -30,7 +36,9 @@ export default function MapContainer() {
         fontFamily: 'monospace'
       }}>
         <Directions />
-      
+        {latitude} 
+      {longitude} 
+      {error}
     </div>
     </Map>
     </APIProvider>
