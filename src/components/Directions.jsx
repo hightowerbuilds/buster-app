@@ -3,7 +3,6 @@ import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps"
 import { useEffect, useState } from "react";
 
 
-
 export default function Directions() {
     const map = useMap();
     const routesLibrary = useMapsLibrary('routes')
@@ -13,9 +12,12 @@ export default function Directions() {
     const [ routeIndex, setRouteIndex ] = useState(0);
     const selected = routes[routeIndex];
     const [ driveStep, setDriveStep ] = useState(0)
-    
+
     const [ startAddress, setStartAddress ] = useState('')
     const [ endAddress, setEndAddress ] = useState('')
+
+
+
 
     useEffect(() => {
         if(!routesLibrary || !map) return;  
@@ -51,6 +53,7 @@ export default function Directions() {
     const startPoint = routes[routeIndex]?.legs[0].start_address
     const endPoint = routes[routeIndex]?.legs[0].end_address
   
+   
 
   return (
     <div style={{ padding: 0}}>
@@ -86,7 +89,8 @@ export default function Directions() {
             onChange={(e) => setDriveStep(e.target.value)}
             type="number"
             value={driveStep} />
-       
+     
+
     </div>
   );
 }
