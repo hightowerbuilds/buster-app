@@ -1,6 +1,7 @@
 
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps"
 import { useEffect, useState } from "react";
+import { useGeolocation } from "../hooks/useGeolocation";
 
 
 export default function Directions() {
@@ -10,12 +11,10 @@ export default function Directions() {
     const [ directionsRenderer, setDirectionsRenderer ] = useState('')
     const [ routes, setRoutes ] = useState([])
     const [ routeIndex, setRouteIndex ] = useState(0);
-    const selected = routes[routeIndex];
     const [ driveStep, setDriveStep ] = useState(0)
-
     const [ startAddress, setStartAddress ] = useState('')
     const [ endAddress, setEndAddress ] = useState('')
-
+    const { latitude, longitude, error } = useGeolocation();
 
 
 
@@ -74,17 +73,17 @@ export default function Directions() {
             style={{ width: 290, height: 20, fontFamily: 'inherit'}} 
             />
         <br />
+        <p> { latitude && longitude ? <button>use current location</button> : 'loading current location' } </p>
         <p style={{ margin: 5, fontSize: 18}}>{endPoint}</p>
         <p style={{ margin: 5, fontSize: 18}}>
-        
-
-                <p>{otherRoutes}</p>
-                <p> choose from {routes.length} routes: {routes.map((route, index) => (<p key={route.summary}> <button onClick={() => setRouteIndex(index)}>{route.summary}</button></p>))}</p>
-             </p> 
+            <p>{otherRoutes}</p>
+            <p> choose from {routes.length} routes: {routes.map((route, index) => (<p key={route.summary}> <button onClick={() => setRouteIndex(index)}>{route.summary}</button></p>))}</p>
+        </p> 
         <p style={{ margin: 5, fontSize: 18}}>distance: {distance}</p>
         <p style={{ margin: 5, fontSize: 18}}>duration: {duration}</p>
         <p style={{ margin: 5, fontSize: 18}}># of steps: {steps}</p>
         <p>instructions: {instructions}</p>
+
         <input 
             onChange={(e) => setDriveStep(e.target.value)}
             type="number"

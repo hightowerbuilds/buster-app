@@ -6,7 +6,7 @@ import { useGeolocation } from '../hooks/useGeolocation'
 export default function MapContainer() {
 
   const { latitude, longitude, error } = useGeolocation()
-  console.log(latitude, longitude, error )
+  
 
 
   return (
@@ -18,7 +18,7 @@ export default function MapContainer() {
 
     <APIProvider apiKey={import.meta.env.VITE_KEY}>
     <Map
-      defaultCenter={{ lat: 47, lng: -122}}
+      defaultCenter={{ lat: 48.17, lng: -122.62 }}
       defaultZoom={10}
       gestureHandling={'greedy'}
       disableDefaultUI={true}
@@ -36,9 +36,12 @@ export default function MapContainer() {
         fontFamily: 'monospace'
       }}>
         <Directions />
-        {latitude} 
-      {longitude} 
-      {error}
+
+        <p style={{ margin: 5, fontSize: 18 }}> latitude: {latitude ? latitude : 'loading...'} </p>
+        <p style={{ margin: 5, fontSize: 18 }}> longitude: {longitude ? longitude : 'loading...'} </p>
+       
+     
+
     </div>
     </Map>
     </APIProvider>
