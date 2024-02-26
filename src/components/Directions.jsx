@@ -73,7 +73,7 @@ export default function Directions() {
             style={{ width: 290, height: 20, fontFamily: 'inherit'}} 
             />
         <br />
-        <p> { latitude && longitude ? <button>use current location</button> : 'loading current location' } </p>
+        <p> { latitude && longitude ? <button onClick={() => {setStartAddress()}}>use current location</button> : 'loading current location...' } </p>
         <p style={{ margin: 5, fontSize: 18}}>{endPoint}</p>
         <p style={{ margin: 5, fontSize: 18}}>
             <p>{otherRoutes}</p>

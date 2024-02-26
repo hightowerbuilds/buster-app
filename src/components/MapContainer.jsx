@@ -7,8 +7,6 @@ export default function MapContainer() {
 
   const { latitude, longitude, error } = useGeolocation()
   
-
-
   return (
     <div style={{ 
       height: '100vh', 
