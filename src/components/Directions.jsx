@@ -14,7 +14,7 @@ export default function Directions() {
     const [ driveStep, setDriveStep ] = useState(0)
     const [ startAddress, setStartAddress ] = useState('')
     const [ endAddress, setEndAddress ] = useState('')
-    const { latitude, longitude, error } = useGeolocation();
+    const { latitude, longitude } = useGeolocation();
 
 
 

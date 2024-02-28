@@ -1,11 +1,12 @@
 import { APIProvider, Map } from "@vis.gl/react-google-maps"
 import Directions from "./Directions"
 import { useGeolocation } from '../hooks/useGeolocation'
+import ReverseGeocode from "./ReverseGeocode"
 
 
 export default function MapContainer() {
 
-  const { latitude, longitude, error } = useGeolocation()
+  const { latitude, longitude } = useGeolocation()
   
   return (
     <div style={{ 
@@ -38,7 +39,7 @@ export default function MapContainer() {
         <p style={{ margin: 5, fontSize: 18 }}> latitude: {latitude ? latitude : 'loading...'} </p>
         <p style={{ margin: 5, fontSize: 18 }}> longitude: {longitude ? longitude : 'loading...'} </p>
        
-     
+        <ReverseGeocode />
 
     </div>
     </Map>
