@@ -2,6 +2,7 @@
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps"
 import { useEffect, useState } from "react";
 import { useGeolocation } from "../hooks/useGeolocation";
+import { useReverseGeocode } from "../hooks/useReverseGeocode";
 
 
 export default function Directions() {
@@ -15,9 +16,10 @@ export default function Directions() {
     const [ startAddress, setStartAddress ] = useState('')
     const [ endAddress, setEndAddress ] = useState('')
     const { latitude, longitude } = useGeolocation();
+    const { formattedAddress } = useReverseGeocode();
 
-
-
+    if ( latitude && longitude ) console.log(formattedAddress)
+  
     useEffect(() => {
         if(!routesLibrary || !map) return;  
         setDirectionsService(new routesLibrary.DirectionsService())
@@ -73,7 +75,7 @@ export default function Directions() {
             style={{ width: 290, height: 20, fontFamily: 'inherit'}} 
             />
         <br />
-        <p> { latitude && longitude ? <button onClick={() => {setStartAddress()}}>use current location</button> : 'loading current location...' } </p>
+        <p> { latitude && longitude ? <><button onClick={() => {setStartAddress(formattedAddress)}}>start at current location</button>  <button onClick={() => {setEndAddress(formattedAddress)}}>end at current location</button>  </> : 'loading current location...' } </p>
         <p style={{ margin: 5, fontSize: 18}}>{endPoint}</p>
         <p style={{ margin: 5, fontSize: 18}}>
             <p>{otherRoutes}</p>
