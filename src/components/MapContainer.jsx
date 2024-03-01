@@ -27,6 +27,7 @@ export default function MapContainer() {
         height: '95vh',
         width: 300,
         border: '3px black solid',
+        borderRadius: 5,
         marginTop: 15,
         marginLeft: 15,
         padding: 5,
