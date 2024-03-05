@@ -17,10 +17,12 @@ export default function Dashboard() {
             justifyContent: 'space-evenly'
         }}>
             <Link to="/" style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}>back to map container</Link>
+            
+            <p style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}>information</p>
+            <p style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}>information</p>
+            <p style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}>information</p>
+
             <Link to="/login" style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}> login page </Link>
-            <p style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}>information</p>
-            <p style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}>information</p>
-            <p style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}>information</p>
         </div>
 
 
@@ -40,8 +42,22 @@ export default function Dashboard() {
             border: '2px beige solid', 
             borderRadius: 5, color: 'beige', 
             fontFamily: 'monospace', 
-            fontSize: 15, }}>
+            fontSize: 15,
+            
+             }}>
             history of locations
+
+            <div style={{
+                 display: 'flex',
+                 justifyContent: 'center',
+                 alignItems: 'center',
+                 height: '100%'
+            }}>
+               search counter .... 
+            </div>
+
+
+
         </div>
         <div style={{ 
             height: 480,  
