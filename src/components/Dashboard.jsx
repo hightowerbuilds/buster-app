@@ -17,7 +17,7 @@ export default function Dashboard() {
             justifyContent: 'space-evenly'
         }}>
             <Link to="/" style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}>back to map container</Link>
-            <p style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}>information</p>
+            <Link to="/login" style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}> login page </Link>
             <p style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}>information</p>
             <p style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}>information</p>
             <p style={{ color: 'beige', fontFamily: 'monospace', fontSize: 15, }}>information</p>

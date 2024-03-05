@@ -12,7 +12,7 @@ export default function MapContainer() {
   return (
     <div style={{ 
       height: '100vh', 
-      width: '100%',
+      width: '100%',  
       }}> 
 
     <APIProvider apiKey={import.meta.env.VITE_KEY}>
@@ -42,6 +42,7 @@ export default function MapContainer() {
        
       <div>
         <Link to="/dashboard"><h4>dashboard</h4> </Link>
+        <Link to="/login"><h4>login</h4> </Link>
       </div>
 
     </div>
