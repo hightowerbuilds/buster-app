@@ -2,6 +2,7 @@ import { APIProvider, Map } from "@vis.gl/react-google-maps"
 import Directions from "./Directions"
 import { useGeolocation } from '../hooks/useGeolocation'
 import { Link } from "react-router-dom"
+import MapWidget from "./MapWidget"
 
 
 
@@ -46,6 +47,7 @@ export default function MapContainer() {
       </div>
 
     </div>
+    <MapWidget />
     </Map>
     </APIProvider>
     </div>
