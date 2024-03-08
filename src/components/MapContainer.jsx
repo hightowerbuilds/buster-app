@@ -26,7 +26,7 @@ export default function MapContainer() {
     <div style={{ 
         position: 'absolute',
         zIndex: 0,
-        height: '95vh',
+        height: 'fit-content',
         width: 300,
         border: '3px black solid',
         borderRadius: 5,
@@ -36,18 +36,26 @@ export default function MapContainer() {
         backdropFilter: 'blur(5px)',
         fontFamily: 'monospace'
       }}>
+
+      <div style={{
+        fontSize: 16,
+        display: 'flex',
+        justifyContent: 'space-around',
+        marginBottom: 10
+      }}>
+        <Link to="/dashboard"><h4>DASHBOARD</h4> </Link>
+        <Link to="/login"><h4>LOGIN PAGE</h4> </Link>
+      </div>
+
         <Directions />
 
         <p style={{ margin: 5, fontSize: 18 }}> latitude: {latitude ? latitude : 'loading...'} </p>
         <p style={{ margin: 5, fontSize: 18 }}> longitude: {longitude ? longitude : 'loading...'} </p>
        
-      <div>
-        <Link to="/dashboard"><h4>dashboard</h4> </Link>
-        <Link to="/login"><h4>login</h4> </Link>
-      </div>
+    
 
     </div>
-    <MapWidget />
+    <MapWidget lat={latitude} lng={longitude} />
     </Map>
     </APIProvider>
     </div>

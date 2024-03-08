@@ -1,6 +1,6 @@
 
 
-export default function MapWidget() {
+export default function MapWidget(props) {
   return (
     <div style={{
         position: 'absolute',
@@ -8,18 +8,21 @@ export default function MapWidget() {
         top: 20,
         zIndex: 1,
         height: 100,
-        width: 100, 
+        width: 'fit-content', 
         backdropFilter: 'blur(5px)',
         border: '2px black solid',
         fontFamily: 'monospace',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
+       
     }}>
-        
-        MapWidget
-        {console.log('im here')}
-    
+        <p>
+        <p>map widget</p>
+        <br />
+        <p>{props.lat}</p>
+        <br />
+        <p>{props.lng}</p>
+        </p>
+       
     </div>
   )
 }
