@@ -47,11 +47,13 @@ export default function Dashboard() {
              }}>
             history of locations
 
+             
+
             <div style={{
                  display: 'flex',
                  justifyContent: 'center',
                  alignItems: 'center',
-                 height: '100%'
+                 height: '100%~'
             }}>
                search counter .... 
             </div>

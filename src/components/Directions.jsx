@@ -53,7 +53,7 @@ export default function Directions() {
     const instructions = routes[routeIndex]?.legs[0].steps[driveStep].instructions
     const startPoint = routes[routeIndex]?.legs[0].start_address
     const endPoint = routes[routeIndex]?.legs[0].end_address
-  
+
    
 
   return (
@@ -78,6 +78,7 @@ export default function Directions() {
         <br />
         <p> { latitude && longitude ? <> <button onClick={() => {setEndAddress(formattedAddress)}}>end at current location</button>  </> : 'loading current location...' } </p>
         <p style={{ margin: 5, fontSize: 18}}>{endPoint}</p>
+        { startPoint && endPoint ? <button>save search</button> : 'waiting for start and end points'}
         <p style={{ margin: 5, fontSize: 18}}>
             <p>{otherRoutes}</p>
             <p> choose from {routes.length} routes: {routes.map((route, index) => (<p key={route.summary}> <button onClick={() => setRouteIndex(index)}>{route.summary}</button></p>))}</p>
@@ -86,6 +87,7 @@ export default function Directions() {
         <p style={{ margin: 5, fontSize: 18}}>duration: {duration}</p>
         <p style={{ margin: 5, fontSize: 18}}># of steps: {steps}</p>
         <p>instructions: {instructions}</p>
+
 
         <input 
             onChange={(e) => setDriveStep(e.target.value)}
