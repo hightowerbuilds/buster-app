@@ -1,6 +1,9 @@
 
 
 export default function MapWidget(props) {
+
+
+
   return (
     <div style={{
         position: 'absolute',
@@ -13,6 +16,7 @@ export default function MapWidget(props) {
         border: '2px black solid',
         fontFamily: 'monospace',
         display: 'flex',
+        padding: 5,
        
     }}>
         <p>
