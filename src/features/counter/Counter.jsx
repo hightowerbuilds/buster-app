@@ -18,6 +18,11 @@ export function Counter() {
         <button
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
+          style={{
+            height: 75,
+            width: 75,
+            borderRadius: 10
+          }}
         >
           Increment
         </button>
@@ -30,6 +35,12 @@ export function Counter() {
         <button
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
+          style={{
+            height: 75,
+            width: 75,
+            borderRadius: 10,
+         
+          }}
         >
           Decrement
         </button>
