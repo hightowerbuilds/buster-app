@@ -7,7 +7,13 @@ export function Counter() {
   const dispatch = useDispatch()
 
   return (
-    <div>
+    <div style={{
+        height: '100vh',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }}>
       <div>
         <button
           aria-label="Increment value"
@@ -15,7 +21,12 @@ export function Counter() {
         >
           Increment
         </button>
-        <span>{count}</span>
+        <br />  
+        <span style={{
+          fontSize: 320,
+          fontFamily: 'monospace'
+        }}>{count}</span>
+        <br />
         <button
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
