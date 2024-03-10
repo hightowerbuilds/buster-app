@@ -2,6 +2,10 @@
 
 export default function MapWidget(props) {
 
+    const BOX = {
+      LAT: props.latitude,
+      LNG: props.longitude,
+    }
 
 
   return (
@@ -22,9 +26,9 @@ export default function MapWidget(props) {
         <p>
         <p>map widget</p>
         <br />
-        <p>{props.lat}</p>
+        <p>{BOX.LAT}</p>
         <br />
-        <p>{props.lng}</p>
+        <p>{BOX.LNG}</p>
         </p>
        
     </div>

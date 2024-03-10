@@ -55,7 +55,7 @@ export default function MapContainer() {
     
 
     </div>
-    <MapWidget lat={latitude} lng={longitude} />
+    <MapWidget latitude={latitude} longitude={longitude} />
     </Map>
     </APIProvider>
     </div>
