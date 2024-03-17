@@ -1,4 +1,4 @@
-import { APIProvider, Map } from "@vis.gl/react-google-maps"
+import { APIProvider, Map, latLngEquals } from "@vis.gl/react-google-maps"
 import Directions from "./Directions"
 import { useGeolocation } from '../hooks/useGeolocation'
 import { Link } from "react-router-dom"
@@ -18,8 +18,8 @@ export default function MapContainer() {
 
     <APIProvider apiKey={import.meta.env.VITE_KEY}>
     <Map
-      defaultCenter={{ lat: 48.17, lng: -122.62 }}
-      defaultZoom={10}
+      defaultCenter={{ lat: latitude, lng: longitude }}
+      defaultZoom={15}
       gestureHandling={'greedy'}
       disableDefaultUI={true}
     >
