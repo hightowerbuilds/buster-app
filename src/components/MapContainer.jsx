@@ -1,4 +1,4 @@
-import { APIProvider, Map, latLngEquals } from "@vis.gl/react-google-maps"
+import { APIProvider, Map, } from "@vis.gl/react-google-maps"
 import Directions from "./Directions"
 import { useGeolocation } from '../hooks/useGeolocation'
 import { Link } from "react-router-dom"
