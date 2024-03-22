@@ -31,7 +31,7 @@ export default function MapContainer() {
         border: '3px black solid',
         borderRadius: 5,
         marginTop: 15,
-        marginLeft: 15,
+        marginLeft: 15, 
         padding: 5,
         backdropFilter: 'blur(5px)',
         fontFamily: 'monospace'
