@@ -5,6 +5,8 @@ export default function MapWidget(props) {
     const BOX = {
       LAT: props.latitude,
       LNG: props.longitude,
+      CENTER: props.center,
+
     }
 
 
@@ -24,12 +26,15 @@ export default function MapWidget(props) {
        
     }}>
         <p>
-        <p>map widget</p>
+        <p>MapWidget</p>
         <br />
-        <p>{BOX.LAT}</p>
+        <p>{BOX.LAT ? BOX.LAT : 'loading...'} </p>
         <br />
-        <p>{BOX.LNG}</p>
+        <p>{BOX.LNG ? BOX.LNG : 'loading...'}</p>
         </p>
+        <br />
+       
+       
        
     </div>
   )

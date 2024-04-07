@@ -3,13 +3,17 @@ import Directions from "./Directions"
 import { useGeolocation } from '../hooks/useGeolocation'
 import { Link } from "react-router-dom"
 import MapWidget from "./MapWidget"
+import { useState } from "react"
 
 
 
 export default function MapContainer() {
 
   const { latitude, longitude } = useGeolocation()
+  const [ center, setCenter ] = useState({lat: 47.911, lng: -122.4})
   
+
+
   return (
     <div style={{ 
       height: '100vh', 
@@ -18,8 +22,8 @@ export default function MapContainer() {
 
     <APIProvider apiKey={import.meta.env.VITE_KEY}>
     <Map
-      defaultCenter={{ lat: latitude, lng: longitude }}
-      defaultZoom={15}
+      defaultCenter={center}
+      defaultZoom={10}
       gestureHandling={'greedy'}
       disableDefaultUI={true}
     >
@@ -43,19 +47,16 @@ export default function MapContainer() {
         justifyContent: 'space-around',
         marginBottom: 10
       }}>
-        <Link to="/dashboard"><h4>DASHBOARD</h4> </Link>
-        <Link to="/login"><h4>LOGIN PAGE</h4> </Link>
+           <Link to="/dashboard"><h4>DASHBOARD</h4> </Link>
+           <Link to="/login"><h4>LOGIN PAGE</h4> </Link>
+        {/* <button onClick={moveCenter}>{center} </button> */}
+
       </div>
 
         <Directions />
 
-        <p style={{ margin: 5, fontSize: 18 }}> latitude: {latitude ? latitude : 'loading...'} </p>
-        <p style={{ margin: 5, fontSize: 18 }}> longitude: {longitude ? longitude : 'loading...'} </p>
-       
-    
-
     </div>
-    <MapWidget latitude={latitude} longitude={longitude} />
+            <MapWidget latitude={latitude} longitude={longitude} />
     </Map>
     </APIProvider>
     </div>
